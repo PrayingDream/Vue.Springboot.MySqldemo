@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccc.cpx.sqldemo.Mapper.userMapper">
+    <insert id="insert" parameterType="com.ccc.cpx.sqldemo.pojo.User">
+        insert into test values(null,#{jobNumber},#{name},#{age},#{idNumber},#{phoneNumber},#{department},#{salary},#{deleteSign})
+    </insert>
+    <update id="update" parameterType="com.ccc.cpx.sqldemo.pojo.User">
+        update test set jobNumber=#{jobNumber},name=#{name},age=#{age},idNumber=#{idNumber},phoneNumber=#{phoneNumber},department=#{department},salary=#{salary} where id=#{id}
+    </update>
+    <update id="delete" parameterType="int">
+        update test set deleteSign=true where id=#{id}
+    </update>
+    <update id="updateWithoutIdNumber">
+        update test set jobNumber=#{jobNumber},name=#{name},age=#{age},phoneNumber=#{phoneNumber},department=#{department},salary=#{salary} where id=#{id}
+    </update>
+    <select id="selectall" resultType="com.ccc.cpx.sqldemo.pojo.User">
+        select * from test where deleteSign=0 order by jobNumber for update
+    </select>
+    <select id="selectWithJobNumber" parameterType="String" resultType="com.ccc.cpx.sqldemo.pojo.User">
+        select * from test where jobNumber = #{jobNumber} and deleteSign=0 for update
+    </select>
+    <select id="selectWithName" parameterType="String" resultType="com.ccc.cpx.sqldemo.pojo.User">
+        select * from test where name = #{name} and deleteSign=0 for update
+    </select>
+
+</mapper>
