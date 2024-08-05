@@ -4,7 +4,7 @@
   export default {
     data() {
       return {
-        port: '101.200.41.37',
+        port: 'localhost',
         form: {
           id: 0,
           jobNumber:'',

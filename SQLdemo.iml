@@ -28,7 +28,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:2.6.13" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.6.13" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.6.13" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.6.13" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.6.13" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.11" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.11" level="project" />
@@ -64,6 +63,13 @@
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.13" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-extension:3.5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-core:3.5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-annotation:3.5.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:4.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.6.13" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.6.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.6.13" level="project" />

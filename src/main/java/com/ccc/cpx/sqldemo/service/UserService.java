@@ -1,63 +1,59 @@
 package com.ccc.cpx.sqldemo.service;
 
-import com.ccc.cpx.sqldemo.Mapper.userMapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.ccc.cpx.sqldemo.Mapper.UserMapper;
 import com.ccc.cpx.sqldemo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class UserService {
     @Autowired
-    userMapper usermapper;
+    UserMapper userMapper;
+    QueryWrapper<User> wrapper = new QueryWrapper<>();
+    UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
 
     public List<User> selectall(){
-        return usermapper.selectall();
+        wrapper.clear();
+        wrapper.ne("delete_sign",1);
+        return userMapper.selectList(wrapper);
     }
     public int insert(User user){
-        int i;
-        if(selectWithJobNumber(user.getJobNumber()) == null){
-            try{
-                i = usermapper.insert(user);
-            } catch (Exception e) {
-                i = -1;
-            }
-            return i;
+        wrapper.clear();
+        wrapper.eq("job_number",user.getJobNumber());
+        if (userMapper.selectOne(wrapper) == null){
+            return userMapper.insert(user);
         } else {
             return 0;
         }
+
     }
     public User selectWithJobNumber(String jobNumber) {
-        return usermapper.selectWithJobNumber(jobNumber);
+        wrapper.clear();
+        wrapper.eq("job_number",jobNumber).ne("delete_sign",1);
+        return userMapper.selectOne(wrapper);
     }
     public List<User> selectWithName(String name) {
-        return usermapper.selectWithName(name);
+        wrapper.clear();
+        wrapper.eq("name",name).ne("delete_sign",1);
+        return userMapper.selectList(wrapper);
     }
     public int update(User user){
-        int i;
-        try{
-            i = usermapper.update(user);
-        } catch (Exception e) {
-            i = -1;
-        }
-        return i;
+        return userMapper.updateById(user);
     }
     public int updateWithoutIdNumber(User user){
-        int i;
-        try{
-            i = usermapper.updateWithoutIdNumber(user);
-        } catch (Exception e) {
-            i = -1;
-        }
-        return i;
+        user.setIdNumber(userMapper.selectById(user.getId()).getIdNumber());
+        return userMapper.updateById(user);
     }
     public int delete(int id){
-        int i;
-        try {
-            i = usermapper.delete(id);
-        } catch (Exception e) {
-            i = -1;
-        }
-        return i;
+        updateWrapper.clear();
+        updateWrapper.eq("id",id);
+        User updateUser = new User();
+        updateUser = userMapper.selectById(id);
+        updateUser.setDeleteSign(true);
+        return userMapper.update(updateUser,updateWrapper);
     }
 }

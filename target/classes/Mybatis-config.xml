@@ -16,8 +16,4 @@
 
         </environment>
     </environments>
-
-    <mappers>
-        <mapper resource="com/ccc/cpx/sqldemo/Mapper/userMapper.xml"/>
-    </mappers>
 </configuration>

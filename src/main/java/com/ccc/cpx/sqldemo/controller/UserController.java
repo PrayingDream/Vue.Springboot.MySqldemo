@@ -19,6 +19,7 @@ public class UserController {
     @GetMapping("/selectAll")
     public ResultResponse<List<User>> selectAll() {
         List<User> all = userService.selectall();
+        System.out.println("开始处理敏感信息");
         if (all != null) {
             for (User user : all) {
                 user.setIdNumber(user.getIdNumber().substring(0, 2) + "**************" + user.getIdNumber().substring(16, 18));
