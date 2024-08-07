@@ -186,8 +186,8 @@ export default {
           axios.post('http://'+ that.port +':3000/user/update', this.updateForm).then(function (response) {
             console.log(response);
             if (response.data.code === 200) {
-              axios.get('http://' + that.port + ':3000/user/selectAll').then(function (response) {
-                that.users = response.data.data;
+              axios.post('http://' + that.port + ':3000/user/select', that.selectForm).then(function (response) {
+                that.getForm = response.data.data;
                 that.$notify({
                   title: '编辑成功',
                   message: response.data.message,
